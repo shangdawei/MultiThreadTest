@@ -23,6 +23,7 @@ type
     PB4 : TProgressBar;
     Label1 : TLabel;
     Label2 : TLabel;
+    chkUpdateUI : TCheckBox;
     procedure btnStartClick( Sender : TObject );
     procedure btnStopClick( Sender : TObject );
     procedure FormCreate( Sender : TObject );
@@ -67,7 +68,7 @@ begin
   for I := 0 to ThreadCount - 1 do
   begin
     PrimeThreadArray[ I ] := TPrimeThread.Create( NumberToCheck,
-      ProgressBarArray[ I ], I );
+      ProgressBarArray[ I ], I, chkUpdateUI.checked );
     PrimeThreadArray[ I ].OnTerminate := PrimeThreadTerminate;
   end;
 end;

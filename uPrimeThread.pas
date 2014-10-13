@@ -10,13 +10,14 @@ type
     FProgressBarPos : integer;
     FNumbersToCheck : integer;
     FProgressBar : TProgressBar;
+    FUpdateUI : boolean;
     procedure UpdateProgressBar;
   protected
     procedure Execute; override;
   public
     Tag : integer;
     constructor Create( NumbersToCheck : integer; ProgressBar : TProgressBar;
-      Tag : integer );
+      Tag : integer; UpdateUI : boolean );
   end;
 
 implementation
@@ -27,10 +28,11 @@ uses
 { TPrimeThread }
 
 constructor TPrimeThread.Create( NumbersToCheck : integer;
-  ProgressBar : TProgressBar; Tag : integer );
+  ProgressBar : TProgressBar; Tag : integer; UpdateUI : boolean );
 begin
   FNumbersToCheck := NumbersToCheck;
   FProgressBar := ProgressBar;
+  FUpdateUI := UpdateUI;
   Self.Tag := Tag;
 
   inherited Create;
@@ -40,7 +42,7 @@ end;
 procedure TPrimeThread.Execute;
 var
   N, M : integer;
-  IsPrime : Boolean;
+  IsPrime : boolean;
 begin
   NameThreadForDebugging( 'PrimeThread' );
   { Place thread code here }
@@ -62,7 +64,8 @@ begin
     end;
 
     FProgressBarPos := MulDiv( N, 100, FNumbersToCheck );
-    Synchronize( UpdateProgressBar );
+    if FUpdateUI then
+      Synchronize( UpdateProgressBar );
   end;
 end;
 

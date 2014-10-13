@@ -4,7 +4,7 @@ object frmMain: TfrmMain
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog
   Caption = 'MainForm'
-  ClientHeight = 431
+  ClientHeight = 463
   ClientWidth = 235
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
@@ -33,7 +33,7 @@ object frmMain: TfrmMain
   end
   object btnStop: TButton
     Left = 147
-    Top = 392
+    Top = 424
     Width = 75
     Height = 25
     Caption = 'Stop'
@@ -49,7 +49,7 @@ object frmMain: TfrmMain
   end
   object btnStart: TButton
     Left = 13
-    Top = 392
+    Top = 424
     Width = 75
     Height = 25
     Caption = 'Start'
@@ -120,5 +120,13 @@ object frmMain: TfrmMain
     Width = 209
     Height = 25
     TabOrder = 11
+  end
+  object chkUpdateUI: TCheckBox
+    Left = 8
+    Top = 396
+    Width = 97
+    Height = 17
+    Caption = 'Update ProgressBar'
+    TabOrder = 12
   end
 end
